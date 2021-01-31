@@ -1,13 +1,11 @@
-import playwright from "playwright";
+import * as playwright from "playwright-aws-lambda";
 
 export default async (req, res) => {
-  for (const browserType of ["firefox"]) {
-    const browser = await playwright[browserType].launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    await page.goto("http://whatsmyuseragent.org/");
-    await page.screenshot({ path: `example-${browserType}.png` });
-    await browser.close();
-  }
+  const browser = await playwright.launchChromium({ headless: true });
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await page.goto("http://www.example.com/");
+  browser.close();
+
   res.send("working");
 };
