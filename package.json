@@ -1,5 +1,5 @@
 {
-  "name": "google-kpi-tracker",
+  "name": "performance-tracker",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "chrome-launcher": "^0.13.4",
+    "lighthouse": "^7.0.1",
+    "mongodb": "^3.6.3",
     "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1"
