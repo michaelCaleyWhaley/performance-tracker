@@ -3,7 +3,9 @@ import * as chromeLauncher from "chrome-launcher";
 import { kpiList } from "../../config";
 
 export default async () => {
-  const chrome = await chromeLauncher.launch({ chromeFlags: ["--headless"] });
+  const chrome = await chromeLauncher.launch({
+    chromeFlags: ["--headless", "--no-sandbox"],
+  });
   const options = {
     logLevel: "info",
     output: "json",
