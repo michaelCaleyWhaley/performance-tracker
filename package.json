@@ -8,14 +8,14 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
-    "chrome-aws-lambda": "^5.5.0",
     "chrome-launcher": "^0.13.4",
     "lighthouse": "^6.2.0",
     "mongodb": "^3.6.3",
     "next": "10.0.6",
-    "puppeteer": "^5.5.0",
-    "puppeteer-core": "^5.5.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.8.0"
   }
 }
