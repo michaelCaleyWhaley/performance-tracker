@@ -9,6 +9,7 @@ export default async () => {
     args: ["--remote-debugging-port=9222"],
   });
   const context = await browser.newContext();
+  const page = await context.newPage();
   // const chrome = await chromeLauncher.launch({
   //   chromeFlags: ["--headless", "--no-sandbox"],
   // });
