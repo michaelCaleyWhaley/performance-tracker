@@ -2,6 +2,7 @@ import * as playwright from "playwright-aws-lambda";
 
 export default async (req, res) => {
   const browser = await playwright.launchChromium({
+    args: ["--remote-debugging-port=9222"],
     headless: true,
   });
   const context = await browser.newContext();

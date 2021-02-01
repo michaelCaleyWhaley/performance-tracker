@@ -4,8 +4,8 @@ import { kpiList } from "../../config";
 
 export default async () => {
   const browser = await playwright.launchChromium({
-    headless: true,
     args: ["--remote-debugging-port=9222"],
+    headless: true,
   });
   const context = await browser.newContext();
   const page = await context.newPage();
