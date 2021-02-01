@@ -1,17 +1,29 @@
+import * as playwright from "playwright-aws-lambda";
 import lighthouse from "lighthouse";
-import * as chromeLauncher from "chrome-launcher";
+// import * as chromeLauncher from "chrome-launcher";
 import { kpiList } from "../../config";
 
 export default async () => {
-  const chrome = await chromeLauncher.launch({
-    chromeFlags: ["--headless", "--no-sandbox"],
+  const browser = await playwright.launchChromium({
+    headless: true,
+    args: ["--remote-debugging-port=9222"],
   });
+  const context = await browser.newContext();
+  // const chrome = await chromeLauncher.launch({
+  //   chromeFlags: ["--headless", "--no-sandbox"],
+  // });
   const options = {
     logLevel: "info",
     output: "json",
-    port: chrome.port,
+    port: 9222,
     onlyAudits: kpiList,
   };
+  // const options = {
+  //   logLevel: "info",
+  //   output: "json",
+  //   port: chrome.port,
+  //   onlyAudits: kpiList,
+  // };
   const runnerResult = await lighthouse("https://www.riverisland.com", options);
 
   const { report } = runnerResult;
@@ -25,6 +37,7 @@ export default async () => {
     },
     { date: Date.now() }
   );
-  await chrome.kill();
+  await browser.close();
+  // await chrome.kill();
   return reportList;
 };
