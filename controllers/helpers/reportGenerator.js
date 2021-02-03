@@ -13,7 +13,7 @@ export default async () => {
   const options = {
     logLevel: "info",
     output: "json",
-    port: 9222,
+    port: 9999,
     onlyAudits: kpiList,
   };
 
